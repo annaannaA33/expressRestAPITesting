@@ -38,6 +38,13 @@ app.get("/api/posts/:year/:month", (req, res) => {
 
 //POST REQUEST
 app.post("/api/courses", (req, res) => {
+    if (!req.body.name || req.body.name.lenght < 3)
+        // 400 Bad Request
+        res.status(400).send(
+            "name is requared and should be mininmum 3 characters."
+        );
+    return;
+
     //rout handler:
     const course = {
         id: courses.length + 1,
